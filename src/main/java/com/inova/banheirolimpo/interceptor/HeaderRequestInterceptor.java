@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.inova.banheirolimpo.service;
+package com.inova.banheirolimpo.interceptor;
 
 import java.io.IOException;
 

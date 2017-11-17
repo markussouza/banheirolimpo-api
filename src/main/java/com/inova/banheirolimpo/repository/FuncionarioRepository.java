@@ -11,7 +11,7 @@ import com.inova.banheirolimpo.model.Funcionario;
 @Repository
 public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> {
 	
-	List<Funcionario> findAllByEstabelecimento(Cliente estabelecimento);
+	List<Funcionario> findAllByCliente(Cliente cliente);
 	
 	Funcionario findByNome(String nome);
 

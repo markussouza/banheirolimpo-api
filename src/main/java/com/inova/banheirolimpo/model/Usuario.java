@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
@@ -18,13 +19,19 @@ import javax.persistence.ManyToMany;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * @author Markus Souza on 16/11/2017.
  *
  */
+
+@Entity
+@ToString
+@EqualsAndHashCode(callSuper = false)
 public class Usuario extends AbstractAuditoria<Long> {
 
 	/**

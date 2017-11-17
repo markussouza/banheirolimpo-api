@@ -11,6 +11,6 @@ import com.inova.banheirolimpo.model.Cliente;
 @Repository
 public interface BanheiroRepository extends JpaRepository<Banheiro, Long> {
 	
-	List<Banheiro> findAllByEstabelecimento(Cliente estabelecimento);
+	List<Banheiro> findAllByCliente(Cliente cliente);
 
 }

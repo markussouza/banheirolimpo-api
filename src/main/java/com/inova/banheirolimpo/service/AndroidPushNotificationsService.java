@@ -12,6 +12,8 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.inova.banheirolimpo.interceptor.HeaderRequestInterceptor;
+
 /**
  * @author Markus Souza
  * @since 25/10/2017

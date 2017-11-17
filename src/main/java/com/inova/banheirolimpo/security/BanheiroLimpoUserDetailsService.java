@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 
 import com.inova.banheirolimpo.model.Papel;
 import com.inova.banheirolimpo.model.Usuario;
@@ -22,6 +23,8 @@ import com.inova.banheirolimpo.repository.UsuarioRepository;
  * @author Markus Souza on 16/11/2017
  *
  */
+
+@Component
 public class BanheiroLimpoUserDetailsService implements UserDetailsService {
 	
 	@Autowired

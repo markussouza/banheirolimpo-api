@@ -29,7 +29,7 @@ public class AndroidPushNotificationResource {
 	@Autowired
 	private AndroidPushNotificationsService androidPushNotificationsService;
 
-	@GetMapping("/send")
+	@GetMapping("/enviarpush")
 	public ResponseEntity<String> send() throws JSONException {
 
 		JSONObject body = new JSONObject();

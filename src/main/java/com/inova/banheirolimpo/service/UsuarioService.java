@@ -23,15 +23,12 @@ public class UsuarioService {
 	private UsuarioRepository usuarioRepository;
 	
 	
-	@Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-	
 	public Usuario findByNomeusuario(String nomeusuario) {
 		return usuarioRepository.findByNomeusuario(nomeusuario);
 	}
 	
 	public Usuario save(Usuario usuario) {
-		usuario.setSenha(bCryptPasswordEncoder.encode(usuario.getSenha()));
+		usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
 		return usuarioRepository.save(usuario);
 	}
 
