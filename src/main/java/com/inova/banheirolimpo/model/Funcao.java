@@ -20,8 +20,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * @author Markus Souza
- * @since 25/10/2017
+ * @author Markus Souza on 25/10/2017
  *
  */
 @Entity
@@ -32,7 +31,7 @@ public class Funcao extends AbstractPersistable<Long>{
 	private static final long serialVersionUID = 1L;
 	
 	@NotBlank(message = "O campo descrição é de preenchimento obrigatório.")
-	@Length(min = 5, max = 20, message = "Este campo deve conter entre 5 e 20 caracteres.")
+	@Length(min = 5, max = 20, message = "O campo descrição deve conter entre 5 e 20 caracteres.")
 	@Column(nullable = false, length = 20)
 	@Getter @Setter
 	private String descricao;

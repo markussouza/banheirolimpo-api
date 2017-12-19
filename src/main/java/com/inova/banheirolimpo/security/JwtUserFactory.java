@@ -15,9 +15,9 @@ public class JwtUserFactory {
 	}
 
 	/**
-	 * Converte e gera um JwtUser com base nos dados de um funcionário.
+	 * Converte e gera um JwtUser com base nos dados de um usuário.
 	 * 
-	 * @param funcionario
+	 * @param usuario
 	 * @return JwtUser
 	 */
 	public static JwtUser create(Usuario usuario) {
@@ -26,9 +26,9 @@ public class JwtUserFactory {
 	}
 
 	/**
-	 * Converte o perfil do usuário para o formato utilizado pelo Spring Security.
+	 * Converte o papel do usuário para o formato utilizado pelo Spring Security.
 	 * 
-	 * @param perfilEnum
+	 * @param papel
 	 * @return List<GrantedAuthority>
 	 */
 	private static List<GrantedAuthority> mapToGrantedAuthorities(List<Papel> papeis) {

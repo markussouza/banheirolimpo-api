@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -20,11 +21,8 @@ import lombok.ToString;
 @Entity
 @ToString
 @EqualsAndHashCode(callSuper = false)
-public class Papel extends AbstractAuditoria<Long> {
+public class Papel extends AbstractPersistable<Long> {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -2966156421128362346L;
 
 	@NotEmpty(message = "O campo sigla é obrigatório")

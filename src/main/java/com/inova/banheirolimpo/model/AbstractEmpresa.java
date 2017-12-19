@@ -8,10 +8,10 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CNPJ;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import com.inova.banheirolimpo.enums.Estados;
 
@@ -23,49 +23,48 @@ import lombok.Setter;
  *
  */
 @MappedSuperclass
-public abstract class AbstractEmpresa extends AbstractAuditoria<Long> {
+public abstract class AbstractEmpresa extends AbstractPersistable<Long> {
 
-	
 	private static final long serialVersionUID = -8334204095835331718L;
 
 	@NotBlank(message = "O campo razão social é de preenchimento obrigatório.")
-	@Size(min = 5, max = 200, message = "")
+	@Column(length = 200)
 	@Getter @Setter
 	private String razaoSocial;
 	
 	@NotBlank(message = "O campo nome é de preenchimento obrigatório.")
-	@Size(max = 200)
+	@Column(length = 200)
 	@Getter @Setter
 	private String nomeFantasia;
 	
 	@NotBlank(message = "O campo CNPJ é de preenchimento obrigatório.")
-	@Column(nullable = false, length = 18)
+	@Column(length = 18)
 	@CNPJ(message = "CNPJ inválido.")
 	@Getter @Setter
 	private String cnpj;
 	
 	@NotBlank(message = "O campo endereco é de preenchimento obrigatório.")
-	@Size(min = 10, max = 100)
+	@Column(length = 100)
 	@Getter @Setter
 	private String endereco;
 	
 	@NotBlank(message = "O campo bairro é de preenchimento obrigatório.")
-	@Size(min = 5, max = 150)
+	@Column(length = 150)
 	@Getter @Setter
 	private String bairro;
 	
 	@NotBlank(message = "O campo razão social é de preenchimento obrigatório.")
-	@Size(max = 70)
+	@Column(length = 70)
 	@Getter @Setter
 	private String cidade;
 	
 	@NotBlank(message = "O campo uf é de preenchimento obrigatório.")
-	@Size(min = 2, max = 2)
+	@Column(length = 2)
 	@Enumerated(EnumType.STRING)
 	@Getter @Setter
 	private Estados uf;
 	
-	@Size(max = 9)
+	@Column(length = 9)
 	@Pattern(regexp = "(\\d{5})-(\\d{3})")
 	@Getter @Setter
 	private String cep;

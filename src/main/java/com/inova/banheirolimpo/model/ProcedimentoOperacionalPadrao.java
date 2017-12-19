@@ -23,8 +23,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * @author Markus Souza
- * @since 03/11/2017
+ * @author Markus Souza on 03/11/2017
  *
  */
 
@@ -34,7 +33,6 @@ import lombok.ToString;
 public class ProcedimentoOperacionalPadrao extends AbstractPersistable<Long> {
 	
 	private static final long serialVersionUID = -7253693949356512861L;
-	
 	
 	@NotBlank(message = "O campo título é de preenchimento obrigatório.")
 	@Size(min = 5, max = 100)

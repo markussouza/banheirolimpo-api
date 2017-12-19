@@ -14,8 +14,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * @author Markus Souza
- * @since 08/11/2017
+ * @author Markus Souza on 08/11/2017
  *
  */
 
@@ -25,7 +24,6 @@ import lombok.ToString;
 public class Empresa extends AbstractEmpresa {
 	
 	private static final long serialVersionUID = 1071168608696477420L;
-	
 	
 	@ManyToOne
 	@JoinColumn(name = "empresa_pai_id", foreignKey = @ForeignKey(name = "FK_EMPRESA_PAI"))

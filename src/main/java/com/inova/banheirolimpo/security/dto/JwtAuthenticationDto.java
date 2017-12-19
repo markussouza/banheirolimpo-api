@@ -1,38 +1,16 @@
 package com.inova.banheirolimpo.security.dto;
 
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import lombok.Data;
+
+@Data
 public class JwtAuthenticationDto {
 	
-	private String email;
-	private String senha;
-
-	public JwtAuthenticationDto() {
-	}
-
-	@NotEmpty(message = "Email não pode ser vazio.")
-	@Email(message = "Email inválido.")
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
+	@NotEmpty(message = "Login não pode ser vazio.")
+	private String Login;
+	
 	@NotEmpty(message = "Senha não pode ser vazia.")
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
-	@Override
-	public String toString() {
-		return "JwtAuthenticationRequestDto [email=" + email + ", senha=" + senha + "]";
-	}
+	private String senha;
 
 }

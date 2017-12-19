@@ -17,6 +17,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * @author Markus Souza on 08/11/2017
+ *
+ */
 @Entity
 @Table(name = "Funcionario_Tarefa")
 @ToString

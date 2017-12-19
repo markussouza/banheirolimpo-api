@@ -26,13 +26,16 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * @author Markus Souza on 08/11/2017
+ *
+ */
 @Entity
 @ToString
 @EqualsAndHashCode(callSuper = false)
 public class Funcionario extends AbstractPersistable<Long> {
 	
 	private static final long serialVersionUID = 1L;
-	
 	
 	@NotBlank(message = "O campo nome é de preenchimento obrigatório.")
 	@Size(min = 5, max = 150)

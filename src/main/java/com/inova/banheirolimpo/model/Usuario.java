@@ -12,12 +12,15 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import com.inova.banheirolimpo.enums.Situacao;
 
@@ -32,23 +35,20 @@ import lombok.ToString;
  */
 
 @Entity
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"login"}, name = "UK_LOGIN")})
 @ToString
 @EqualsAndHashCode(callSuper = false)
-public class Usuario extends AbstractAuditoria<Long> {
+public class Usuario extends AbstractPersistable<Long> {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -21490618310254829L;
 
 	@NotEmpty(message = "O campo login é obrigatório")
-	@Length(min = 5, max = 5, message = "O nome do login deve conter 5 caracteres")
-	@Column(unique = true)
+	@Column(length = 9)
 	@Getter @Setter
 	private String login;
 
 	@NotEmpty(message = "O campo senha é obrigatório")
-	@Length(min = 6, max = 8, message = "A senha deve conter entre 6 e 8 caracteres")
+	@Column(length = 100)
 	@Getter @Setter
 	private String senha;
 	
@@ -59,8 +59,8 @@ public class Usuario extends AbstractAuditoria<Long> {
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "usuario_papel", 
-			   joinColumns = { @JoinColumn(name = "usuario_id") }, 
-			   inverseJoinColumns = {@JoinColumn(name = "papel_id") })
+			   joinColumns = { @JoinColumn(name = "usuario_id",  foreignKey = @ForeignKey(name = "FK_USUARIO_ID")) }, 
+			   inverseJoinColumns = {@JoinColumn(name = "papel_id", foreignKey = @ForeignKey(name = "FK_PAPEL_ID")) })
 	@Getter @Setter
 	private List<Papel> papeis = new ArrayList<>();
 

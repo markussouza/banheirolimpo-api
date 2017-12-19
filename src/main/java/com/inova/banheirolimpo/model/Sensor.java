@@ -14,13 +14,16 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * @author Markus Souza on 08/11/2017
+ *
+ */
 @Entity
 @ToString
 @EqualsAndHashCode(callSuper = false)
 public class Sensor extends AbstractPersistable<Long> {
 	
 	private static final long serialVersionUID = 1L;
-	
 	
 	@Id
 	@JoinColumn(name = "banheiro_id")

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -14,15 +15,14 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * @author Markus Souza
- * @since 08/12/2017
+ * @author Markus Souza on 08/11/2017
  *
  */
 
 @Entity
 @ToString
 @EqualsAndHashCode(callSuper = false)
-public class EscalaTrabalho extends AbstractAuditoria<Long> {
+public class EscalaTrabalho extends AbstractPersistable<Long> {
 	
 	private static final long serialVersionUID = 3741769976893602961L;
 	
