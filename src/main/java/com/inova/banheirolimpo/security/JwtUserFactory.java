@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-import com.inova.banheirolimpo.model.Funcionario;
 import com.inova.banheirolimpo.model.Papel;
 import com.inova.banheirolimpo.model.Usuario;
 
