@@ -51,8 +51,8 @@ private static final String TIME_ZONE = "America/Sao_Paulo";
 				.limit(100)
 				.offset(0)
 				.timeout(0);
-		
-		return bot.execute(getUpdates).updates();
+		List<Update> updates = bot.execute(getUpdates).updates();
+		return updates;
 	}
 
 }
