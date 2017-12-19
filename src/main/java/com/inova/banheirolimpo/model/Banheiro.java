@@ -7,7 +7,6 @@ import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
@@ -52,8 +51,7 @@ public class Banheiro extends AbstractPersistable<Long> {
 	@Getter @Setter
 	private Integer limitadorLimpeza;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
+	@OneToOne(mappedBy = "banheiro", cascade = CascadeType.ALL)
     @Getter @Setter
 	private Sensor sensor;
 	

@@ -45,7 +45,7 @@ public class Funcionario extends AbstractPersistable<Long> {
 	
 	@NotBlank(message = "O campo matrícula é de preenchimento obrigatório.")
 	@Size(min = 3, max = 8)
-	@Column(nullable = false, length = 8)
+	@Column(nullable = false, length = 9)
 	@Getter @Setter
 	private String matricula;
 	
@@ -65,7 +65,7 @@ public class Funcionario extends AbstractPersistable<Long> {
 	private Cliente cliente;
 	
 	@ManyToOne
-	@JoinColumn(name = "escalaTrabalho_id", foreignKey = @ForeignKey(name = "FK_ESCALATRABALHO"))
+	@JoinColumn(name = "escala_trabalho_id", foreignKey = @ForeignKey(name = "FK_ESCALA_TRABALHO"))
 	@Getter @Setter
 	private EscalaTrabalho escalaTrabalho;
 	
