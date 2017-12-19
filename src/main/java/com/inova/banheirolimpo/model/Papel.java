@@ -30,11 +30,6 @@ public class Papel extends AbstractAuditoria<Long> {
 	@NotEmpty(message = "O campo sigla é obrigatório")
 	@Length(min = 5, max = 15, message = "A sigla deve estar entre 5 e 15 caracteres")
 	@Getter @Setter
-	private String sigla;
-	
-	@NotEmpty(message = "O campo descrição é obrigatório")
-	@Length(min = 5, max = 15, message = "A sigla deve estar entre 5 e 15 caracteres")
-	@Getter @Setter
-	private String descricao;
+	private String nome;
 
 }

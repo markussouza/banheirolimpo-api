@@ -15,6 +15,8 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
+import com.inova.banheirolimpo.enums.Situacao;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

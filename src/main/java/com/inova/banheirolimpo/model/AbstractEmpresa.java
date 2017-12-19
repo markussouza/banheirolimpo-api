@@ -13,6 +13,8 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CNPJ;
 
+import com.inova.banheirolimpo.enums.Estados;
+
 import lombok.Getter;
 import lombok.Setter;
 

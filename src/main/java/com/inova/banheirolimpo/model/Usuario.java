@@ -19,6 +19,8 @@ import javax.persistence.ManyToMany;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.inova.banheirolimpo.enums.Situacao;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -39,11 +41,11 @@ public class Usuario extends AbstractAuditoria<Long> {
 	 */
 	private static final long serialVersionUID = -21490618310254829L;
 
-	@NotEmpty(message = "O campo usuário é obrigatório")
-	@Length(min = 5, max = 5, message = "O nome do usuário deve conter 5 caracteres")
+	@NotEmpty(message = "O campo login é obrigatório")
+	@Length(min = 5, max = 5, message = "O nome do login deve conter 5 caracteres")
 	@Column(unique = true)
 	@Getter @Setter
-	private String nomeusuario;
+	private String login;
 
 	@NotEmpty(message = "O campo senha é obrigatório")
 	@Length(min = 6, max = 8, message = "A senha deve conter entre 6 e 8 caracteres")

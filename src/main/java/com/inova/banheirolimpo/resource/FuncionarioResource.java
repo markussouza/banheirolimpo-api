@@ -6,6 +6,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +29,8 @@ import com.inova.banheirolimpo.service.FuncionarioService;
  */
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/funcionarios")
+@CrossOrigin(origins = "*")
 public class FuncionarioResource {
 	
 	@Autowired
@@ -38,25 +40,25 @@ public class FuncionarioResource {
 	private FuncionarioService funcionarioService;
 	
 	
-	@GetMapping("/funcionarios/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<Funcionario> obterPorId(@PathVariable Long id) {
 		Funcionario funcionario = funcionarioRepository.findOne(id);
 		return funcionario != null ? ResponseEntity.ok(funcionario) : ResponseEntity.notFound().build();
 	}
 	
-	@PostMapping("/funcionarios")
+	@PostMapping
 	public ResponseEntity<Funcionario> criar(@Valid @RequestBody Funcionario funcionario, HttpServletResponse response) {
 		Funcionario novoFuncionario = funcionarioRepository.save(funcionario);
 		return ResponseEntity.status(HttpStatus.CREATED).body(novoFuncionario);
 	}
 	
-	@PutMapping("/funcionarios/{id}")
+	@PutMapping("/{id}")
 	public ResponseEntity<Funcionario> atualizar(@PathVariable Long id, @Valid @RequestBody Funcionario funcionario) {
 		Funcionario funcionarioAtualizado = funcionarioService.atualizar(id, funcionario);
 		return ResponseEntity.ok(funcionarioAtualizado);
 	}
 	
-	@DeleteMapping("/funcionarios/{id}")
+	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void remover(@PathVariable Long id) {
 		funcionarioRepository.delete(id);

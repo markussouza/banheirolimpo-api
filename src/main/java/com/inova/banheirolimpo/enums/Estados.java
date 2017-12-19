@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.inova.banheirolimpo.model;
+package com.inova.banheirolimpo.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

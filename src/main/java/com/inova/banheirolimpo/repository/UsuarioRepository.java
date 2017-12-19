@@ -15,6 +15,6 @@ import com.inova.banheirolimpo.model.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	
-	Usuario findByNomeusuario(String usuario);
+	Usuario findByLogin(String login);
 
 }

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.inova.banheirolimpo.model;
+package com.inova.banheirolimpo.enums;
 
 /**
  * @author Markus Souza
