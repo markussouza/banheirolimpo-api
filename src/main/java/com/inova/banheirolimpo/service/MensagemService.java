@@ -11,7 +11,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import com.inova.banheirolimpo.model.Funcao;
+import com.inova.banheirolimpo.model.Funcionario;
 import com.inova.banheirolimpo.model.Sensor;
+import com.inova.banheirolimpo.repository.FuncaoRepository;
+import com.inova.banheirolimpo.repository.FuncionarioRepository;
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.Message;
 import com.pengrad.telegrambot.model.Update;
@@ -32,6 +36,15 @@ public class MensagemService {
 	@Autowired
 	private SensorService sensorService;
 	
+	@Autowired
+	private FuncionarioRepository funcionarioRepository;
+	
+	@Autowired
+	private FuncionarioService funcionarioService;
+	
+	@Autowired
+	private FuncaoRepository funcaoRepository;
+	
 	@Value("${bot.token}")
 	private String token;
 	
@@ -43,9 +56,11 @@ public class MensagemService {
 		bot = new TelegramBot(token);
 		Optional<Sensor> sensor = sensorService.findByNumero(numeroSensor);
 		if (sensor.isPresent()) {
-			String msg = String.format("Limite para limpeza do banheiro %s atingido.", sensor.get().getBanheiro().getId());
+			String msg = String.format("Limite para limpeza do banheiro %s atingido.", sensor.get().getBanheiro().getNome());
+			Funcao funcao = funcaoRepository.findByDescricao("ENCARREGADO");
+			Funcionario funcionario = funcionarioRepository.findByClienteAndFuncao(sensor.get().getBanheiro().getCliente(), funcao);
 			
-			request = new SendMessage("350976028", msg)
+			request = new SendMessage(funcionario.getTelegramChatId(), msg)
 			        .parseMode(ParseMode.HTML)
 			        .disableWebPagePreview(true)
 			        .disableNotification(true)
@@ -59,14 +74,21 @@ public class MensagemService {
 	}
 	
 	@Scheduled(cron = "* */5 * * * *", zone = TIME_ZONE)
-	public List<Update> getUpdates() {
+	public void getUpdates() {
 		bot = new TelegramBot(token);
-		GetUpdates getUpdates = new GetUpdates()
-				.limit(100)
-				.offset(0)
-				.timeout(0);
+		GetUpdates getUpdates = new GetUpdates().limit(100).offset(0).timeout(0);
 		List<Update> updates = bot.execute(getUpdates).updates();
-		return updates;
+		
+		if (!updates.isEmpty()) {
+			Funcionario funcionario = null;
+			for (Update update : updates) {
+				funcionario = funcionarioRepository.findByPrimeiroNomeAndUltimoNome(update.message().chat().firstName(), update.message().chat().lastName());
+				if (funcionario != null) {
+					funcionario.setTelegramChatId(update.message().chat().id());
+					funcionario = funcionarioService.atualizar(funcionario.getId(), funcionario);
+				}
+			}
+		}
 	}
 
 }

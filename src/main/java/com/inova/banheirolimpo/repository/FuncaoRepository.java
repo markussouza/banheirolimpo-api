@@ -12,5 +12,7 @@ import com.inova.banheirolimpo.model.Funcao;
 
 @Repository
 public interface FuncaoRepository extends JpaRepository<Funcao, Long> {
+	
+	Funcao findByDescricao(String descricao);
 
 }

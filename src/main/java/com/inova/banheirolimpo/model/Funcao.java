@@ -12,6 +12,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
@@ -25,6 +27,7 @@ import lombok.Data;
  *
  */
 @Entity
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"descricao"}, name = "UK_DESCRICAO_FUNCAO")})
 @Data
 public class Funcao implements Serializable {
 	

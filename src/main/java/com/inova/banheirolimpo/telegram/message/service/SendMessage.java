@@ -3,10 +3,13 @@
  */
 package com.inova.banheirolimpo.telegram.message.service;
 
+import java.net.InetSocketAddress;
+import java.net.Proxy;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -47,7 +50,10 @@ public class SendMessage {
 	}
 	
 	public void enviarMensagem() {
-		restTemplate = new RestTemplate();
+		SimpleClientHttpRequestFactory clientHttpReq = new SimpleClientHttpRequestFactory();
+		Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("proxy-rr.redecamara.camara.gov.br", 80));
+		clientHttpReq.setProxy(proxy);
+		restTemplate = new RestTemplate(clientHttpReq);
 		String msg = String.format("Limite para limpeza do banheiro %s atingido.", "F2P");
 		
 		String endpoint = String.format("%sbot%s/sendMessage?chat_id=%s&text=%s", uri, token, "350976028", msg);

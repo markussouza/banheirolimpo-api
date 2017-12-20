@@ -17,7 +17,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
-import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -43,16 +42,24 @@ public class Funcionario implements Serializable {
 	private Long id;
 	
 	@NotBlank(message = "O campo nome é de preenchimento obrigatório.")
-	@Size(min = 5, max = 150)
 	@Column(nullable = false, length = 150)
 	private String nome;
 	
+	@Column(name = "primeiro_nome", nullable = false, length = 150)
+	private String primeiroNome;
+	
+	@Column(name = "ultimo_nome", nullable = false, length = 150)
+	private String ultimoNome;
+	
 	@NotBlank(message = "O campo matrícula é de preenchimento obrigatório.")
-	@Size(min = 3, max = 8)
 	@Column(nullable = false, length = 9)
 	private String matricula;
 	
+	@Column(name = "telegram_chat_id")
 	private Long telegramChatId;
+	
+	@Column(length = 50)
+	private String telegramUserName;
 	
 	@Enumerated(EnumType.STRING)
 	private Situacao situacao;
