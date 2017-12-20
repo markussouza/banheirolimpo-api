@@ -3,41 +3,44 @@
  */
 package com.inova.banheirolimpo.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import com.inova.banheirolimpo.enums.Situacao;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 /**
  * @author Markus Souza on 25/10/2017
  *
  */
 @Entity
-@ToString
-@EqualsAndHashCode(callSuper = false)
-public class Funcao extends AbstractPersistable<Long>{
+@Data
+public class Funcao implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@Column(columnDefinition = "serial")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	
 	@NotBlank(message = "O campo descrição é de preenchimento obrigatório.")
 	@Length(min = 5, max = 20, message = "O campo descrição deve conter entre 5 e 20 caracteres.")
 	@Column(nullable = false, length = 20)
-	@Getter @Setter
 	private String descricao;
 	
-	@Enumerated(EnumType.ORDINAL)
-	@Getter @Setter
+	@Enumerated(EnumType.STRING)
 	private Situacao situacao;
 	
 }

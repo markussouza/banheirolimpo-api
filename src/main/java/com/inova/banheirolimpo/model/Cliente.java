@@ -30,8 +30,6 @@ public class Cliente extends AbstractEmpresa {
 	@Getter @Setter
 	private String centroDeCusto;
 	
-	@NotBlank(message = "O campo situação é de preencimento obrigatório.")
-	@Column(length = 7)
 	@Enumerated(EnumType.STRING)
 	@Getter @Setter
 	private Situacao situacao;

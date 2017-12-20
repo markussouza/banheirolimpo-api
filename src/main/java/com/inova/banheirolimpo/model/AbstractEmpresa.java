@@ -3,15 +3,19 @@
  */
 package com.inova.banheirolimpo.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CNPJ;
-import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import com.inova.banheirolimpo.enums.Estados;
 
@@ -23,9 +27,14 @@ import lombok.Setter;
  *
  */
 @MappedSuperclass
-public abstract class AbstractEmpresa extends AbstractPersistable<Long> {
+public abstract class AbstractEmpresa implements Serializable {
 
 	private static final long serialVersionUID = -8334204095835331718L;
+	
+	@Id
+	@Column(columnDefinition = "serial")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
 	@NotBlank(message = "O campo razão social é de preenchimento obrigatório.")
 	@Column(length = 200)
@@ -58,8 +67,6 @@ public abstract class AbstractEmpresa extends AbstractPersistable<Long> {
 	@Getter @Setter
 	private String cidade;
 	
-	@NotBlank(message = "O campo uf é de preenchimento obrigatório.")
-	@Column(length = 2)
 	@Enumerated(EnumType.STRING)
 	@Getter @Setter
 	private Estados uf;

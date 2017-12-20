@@ -22,9 +22,9 @@ public class MensagemResource {
 	@Autowired
 	private MensagemService telegramService;
 	
-	@PostMapping("/{chatId}")
-	public void enviarMensagem(@PathVariable String chatId) {
-		telegramService.enviarMensagem(chatId, "Esse é um teste da inova-message-api.");
+	@PostMapping("/{numeroSensor}")
+	public void enviarMensagem(@PathVariable String numeroSensor) {
+		telegramService.enviarMensagem(numeroSensor);
 	}
 
 }

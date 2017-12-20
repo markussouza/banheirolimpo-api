@@ -2,6 +2,7 @@ package com.inova.banheirolimpo.security;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -31,7 +32,7 @@ public class JwtUserFactory {
 	 * @param papel
 	 * @return List<GrantedAuthority>
 	 */
-	private static List<GrantedAuthority> mapToGrantedAuthorities(List<Papel> papeis) {
+	private static List<GrantedAuthority> mapToGrantedAuthorities(Set<Papel> papeis) {
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		for (Papel papel : papeis) {
 			authorities.add(new SimpleGrantedAuthority(papel.getNome()));
