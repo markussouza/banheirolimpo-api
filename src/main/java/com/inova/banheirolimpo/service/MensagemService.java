@@ -16,6 +16,7 @@ import com.inova.banheirolimpo.model.Funcionario;
 import com.inova.banheirolimpo.model.Sensor;
 import com.inova.banheirolimpo.repository.FuncaoRepository;
 import com.inova.banheirolimpo.repository.FuncionarioRepository;
+import com.inova.banheirolimpo.repository.TarefaRepository;
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.Message;
 import com.pengrad.telegrambot.model.Update;
@@ -44,13 +45,14 @@ public class MensagemService {
 	
 	@Autowired
 	private FuncaoRepository funcaoRepository;
+
 	
 	@Value("${bot.token}")
 	private String token;
 	
 	private TelegramBot bot;
 	
-	public Message enviarMensagem(String numeroSensor) {
+	public void enviarMensagem(String numeroSensor) {
 		SendMessage request = null;
 		Message message = null;
 		bot = new TelegramBot(token);
@@ -59,18 +61,18 @@ public class MensagemService {
 			String msg = String.format("Limite para limpeza do banheiro %s atingido.", sensor.get().getBanheiro().getNome());
 			Funcao funcao = funcaoRepository.findByDescricao("ENCARREGADO");
 			Funcionario funcionario = funcionarioRepository.findByClienteAndFuncao(sensor.get().getBanheiro().getCliente(), funcao);
+			if (funcionario != null) {
+				request = new SendMessage(funcionario.getTelegramChatId(), msg)
+				        .parseMode(ParseMode.HTML)
+				        .disableWebPagePreview(true)
+				        .disableNotification(true)
+				        .replyToMessageId(1)
+				        .replyMarkup(new ForceReply());
+				message = bot.execute(request).message();
+				
+			}
 			
-			request = new SendMessage(funcionario.getTelegramChatId(), msg)
-			        .parseMode(ParseMode.HTML)
-			        .disableWebPagePreview(true)
-			        .disableNotification(true)
-			        .replyToMessageId(1)
-			        .replyMarkup(new ForceReply());
-			message = bot.execute(request).message();
 		}
-
-		return message;
-
 	}
 	
 	@Scheduled(cron = "* */5 * * * *", zone = TIME_ZONE)
