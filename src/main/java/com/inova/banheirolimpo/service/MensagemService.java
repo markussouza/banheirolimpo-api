@@ -53,9 +53,12 @@ public class MensagemService {
 	private TelegramBot bot;
 	
 	public void enviarMensagem(String numeroSensor) {
+		
+		//462491517
+		//350976028
 		SendMessage request = null;
 		Message message = null;
-		bot = new TelegramBot(token);
+		
 		Optional<Sensor> sensor = sensorService.findByNumero(numeroSensor);
 		if (sensor.isPresent()) {
 			String msg = String.format("Limite para limpeza do banheiro %s atingido.", sensor.get().getBanheiro().getNome());
@@ -68,6 +71,8 @@ public class MensagemService {
 				        .disableNotification(true)
 				        .replyToMessageId(1)
 				        .replyMarkup(new ForceReply());
+				
+				bot = new TelegramBot(token);
 				message = bot.execute(request).message();
 				
 			}

@@ -45,10 +45,10 @@ public class Funcionario implements Serializable {
 	@Column(nullable = false, length = 150)
 	private String nome;
 	
-	@Column(name = "primeiro_nome", nullable = false, length = 150)
+	@Column(name = "primeiro_nome", nullable = false, length = 50)
 	private String primeiroNome;
 	
-	@Column(name = "ultimo_nome", nullable = false, length = 150)
+	@Column(name = "ultimo_nome", nullable = false, length = 50)
 	private String ultimoNome;
 	
 	@NotBlank(message = "O campo matrícula é de preenchimento obrigatório.")
