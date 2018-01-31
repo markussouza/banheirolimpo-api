@@ -58,9 +58,6 @@ public class Funcionario implements Serializable {
 	@Column(name = "telegram_chat_id")
 	private Long telegramChatId;
 	
-	@Column(length = 50)
-	private String telegramUserName;
-	
 	@Enumerated(EnumType.STRING)
 	private Situacao situacao;
 	

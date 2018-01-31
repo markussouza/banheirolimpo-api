@@ -3,6 +3,8 @@
  */
 package com.inova.banheirolimpo.telegram.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Data;
 
 /**
@@ -10,9 +12,10 @@ import lombok.Data;
  *
  */
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Chat {
 
-	private int id;
+	private Long id;
 	private String first_name;
 	private String last_name;
 	private String type;
