@@ -3,10 +3,8 @@
  */
 package com.inova.banheirolimpo.telegram.message.service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -16,8 +14,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.inova.banheirolimpo.model.Funcao;
-import com.inova.banheirolimpo.model.Funcionario;
 import com.inova.banheirolimpo.model.Sensor;
 import com.inova.banheirolimpo.repository.FuncaoRepository;
 import com.inova.banheirolimpo.repository.FuncionarioRepository;

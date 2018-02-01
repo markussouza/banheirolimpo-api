@@ -4,6 +4,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.ForeignKey;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -38,5 +41,9 @@ public class Cliente extends AbstractEmpresa {
 	@Column(length = 70)
 	@Getter @Setter
 	private String nomeWifi;
+	
+	@ManyToOne
+	@JoinColumn(name = "empresa_id", foreignKey = @ForeignKey(name = "FK_EMPRESA"))
+	private Empresa empresa;
 	
 }
