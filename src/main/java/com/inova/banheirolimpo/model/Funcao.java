@@ -44,6 +44,7 @@ public class Funcao implements Serializable {
 	private String descricao;
 	
 	@Enumerated(EnumType.STRING)
+	@Column(length = 7)
 	private Situacao situacao;
 	
 }

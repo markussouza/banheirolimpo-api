@@ -51,6 +51,7 @@ public class ProcedimentoOperacionalPadrao implements Serializable {
 	private String documento;
 	
 	@Enumerated(EnumType.STRING)
+	@Column(length = 7)
 	private Situacao situacao;
 
 }

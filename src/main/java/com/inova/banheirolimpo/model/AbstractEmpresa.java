@@ -19,14 +19,14 @@ import org.hibernate.validator.constraints.br.CNPJ;
 
 import com.inova.banheirolimpo.enums.Estados;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 /**
  * @author Markus Souza on 08/11/2017
  *
  */
 @MappedSuperclass
+@Data
 public abstract class AbstractEmpresa implements Serializable {
 
 	private static final long serialVersionUID = -8334204095835331718L;
@@ -38,42 +38,35 @@ public abstract class AbstractEmpresa implements Serializable {
 
 	@NotBlank(message = "O campo razão social é de preenchimento obrigatório.")
 	@Column(length = 200)
-	@Getter @Setter
 	private String razaoSocial;
 	
 	@NotBlank(message = "O campo nome é de preenchimento obrigatório.")
 	@Column(length = 200)
-	@Getter @Setter
 	private String nomeFantasia;
 	
 	@NotBlank(message = "O campo CNPJ é de preenchimento obrigatório.")
 	@Column(length = 18)
 	@CNPJ(message = "CNPJ inválido.")
-	@Getter @Setter
 	private String cnpj;
 	
 	@NotBlank(message = "O campo endereco é de preenchimento obrigatório.")
 	@Column(length = 100)
-	@Getter @Setter
 	private String endereco;
 	
 	@NotBlank(message = "O campo bairro é de preenchimento obrigatório.")
 	@Column(length = 150)
-	@Getter @Setter
 	private String bairro;
 	
 	@NotBlank(message = "O campo razão social é de preenchimento obrigatório.")
 	@Column(length = 70)
-	@Getter @Setter
 	private String cidade;
 	
 	@Enumerated(EnumType.STRING)
-	@Getter @Setter
+	@Column(length = 2)
 	private Estados uf;
 	
 	@Column(length = 9)
 	@Pattern(regexp = "(\\d{5})-(\\d{3})")
-	@Getter @Setter
 	private String cep;
 	
 }

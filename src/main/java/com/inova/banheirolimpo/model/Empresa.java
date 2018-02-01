@@ -8,10 +8,8 @@ import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
 /**
  * @author Markus Souza on 08/11/2017
@@ -19,15 +17,14 @@ import lombok.ToString;
  */
 
 @Entity
-@ToString
+@Data
 @EqualsAndHashCode(callSuper = false)
 public class Empresa extends AbstractEmpresa {
 	
 	private static final long serialVersionUID = 1071168608696477420L;
 	
 	@ManyToOne
-	@JoinColumn(name = "empresa_pai_id", foreignKey = @ForeignKey(name = "FK_EMPRESA_PAI"))
-	@Getter @Setter
+	@JoinColumn(name = "empresa_pai_id", foreignKey = @ForeignKey(name = "FK_EMPRESA_PAI"), nullable = true)
 	public Empresa filial;
 
 }

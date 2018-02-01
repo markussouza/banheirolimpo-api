@@ -1,0 +1,2 @@
+INSERT INTO Empresa (razao_social, nome_fantasia, cnpj, endereco, bairro, cidade, uf, cep)
+  VALUES ('MARKUS DO C SOUZA - ME', 'MKS TECNOLOGIA', '20.828.917/0001-96', 'QUADRA 101 LT 6 BL B AP 810', 'BRASÍLIA', 'ÁGUAS CLARAS', 'DF', '71907-180');

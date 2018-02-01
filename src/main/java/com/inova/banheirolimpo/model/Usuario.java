@@ -29,8 +29,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 import com.inova.banheirolimpo.enums.Situacao;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * @author Markus Souza on 16/11/2017.
@@ -58,7 +56,7 @@ public class Usuario implements Serializable {
 	private String senha;
 	
 	@Enumerated(EnumType.STRING)
-	@Getter @Setter
+	@Column(length = 7)
 	private Situacao situacao;
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

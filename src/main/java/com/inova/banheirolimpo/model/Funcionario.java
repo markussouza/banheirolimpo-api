@@ -59,6 +59,7 @@ public class Funcionario implements Serializable {
 	private Long telegramChatId;
 	
 	@Enumerated(EnumType.STRING)
+	@Column(length = 7)
 	private Situacao situacao;
 	
 	@ManyToOne
