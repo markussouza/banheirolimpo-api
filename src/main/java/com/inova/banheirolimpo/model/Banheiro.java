@@ -33,7 +33,7 @@ public class Banheiro implements Serializable {
 	private static final long serialVersionUID = -3505657055346485475L;
 	
 	@Id
-	@Column(columnDefinition = "serial")
+	@Column(insertable = false, updatable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	

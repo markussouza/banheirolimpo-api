@@ -32,16 +32,16 @@ public abstract class AbstractEmpresa implements Serializable {
 	private static final long serialVersionUID = -8334204095835331718L;
 	
 	@Id
-	@Column(columnDefinition = "serial")
+	@Column(insertable = false, updatable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@NotBlank(message = "O campo razão social é de preenchimento obrigatório.")
-	@Column(length = 200)
+	@Column(name = "razao_social", length = 200)
 	private String razaoSocial;
 	
 	@NotBlank(message = "O campo nome é de preenchimento obrigatório.")
-	@Column(length = 200)
+	@Column(name = "nome_fantasia", length = 200)
 	private String nomeFantasia;
 	
 	@NotBlank(message = "O campo CNPJ é de preenchimento obrigatório.")
@@ -57,15 +57,15 @@ public abstract class AbstractEmpresa implements Serializable {
 	@Column(length = 150)
 	private String bairro;
 	
-	@NotBlank(message = "O campo razão social é de preenchimento obrigatório.")
+	@NotBlank(message = "O campo cidade é de preenchimento obrigatório.")
 	@Column(length = 70)
 	private String cidade;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(length = 2)
+	@Column(length = 2, nullable = false)
 	private Estados uf;
 	
-	@Column(length = 9)
+	@Column(length = 9, nullable = false)
 	@Pattern(regexp = "(\\d{5})-(\\d{3})")
 	private String cep;
 	

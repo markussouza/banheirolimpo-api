@@ -28,6 +28,7 @@ public class Cliente extends AbstractEmpresa {
 	private static final long serialVersionUID = 1L;
 
 	@NotBlank(message = "O campo centro de custo é de preenchimento obrigatório.")
+	@Column(name = "centro_de_custo")
 	private String centroDeCusto;
 	
 	@Enumerated(EnumType.STRING)
@@ -35,7 +36,7 @@ public class Cliente extends AbstractEmpresa {
 	private Situacao situacao;
 	
 	@NotBlank
-	@Column(length = 70)
+	@Column(name = "nome_wifi", length = 70)
 	private String nomeWifi;
 	
 	@ManyToOne

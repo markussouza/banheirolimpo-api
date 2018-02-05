@@ -38,6 +38,7 @@ public class EmpresaResource {
 	@Autowired
 	private EmpresaService empresaService;
 	
+	@GetMapping
 	public List<Empresa> obterTodos() {
 		return empresaRepository.findAll();
 	}
