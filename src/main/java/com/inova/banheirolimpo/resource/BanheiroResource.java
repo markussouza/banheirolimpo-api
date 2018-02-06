@@ -30,7 +30,6 @@ import com.inova.banheirolimpo.service.BanheiroService;
 
 @RestController
 @RequestMapping("/api/banheiros")
-@CrossOrigin(origins = "*")
 public class BanheiroResource {
 	
 	@Autowired

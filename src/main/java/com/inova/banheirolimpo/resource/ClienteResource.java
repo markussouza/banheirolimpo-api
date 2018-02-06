@@ -32,7 +32,6 @@ import com.inova.banheirolimpo.service.ClienteService;
 
 @RestController
 @RequestMapping("/api/clientes")
-@CrossOrigin(origins = "*")
 public class ClienteResource {
 	
 	@Autowired

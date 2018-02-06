@@ -30,7 +30,6 @@ import com.inova.banheirolimpo.service.FuncionarioService;
 
 @RestController
 @RequestMapping("/api/funcionarios")
-@CrossOrigin(origins = "*")
 public class FuncionarioResource {
 	
 	@Autowired

@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inova.banheirolimpo.model.Empresa;
@@ -39,8 +38,8 @@ public class EmpresaResource {
 	private EmpresaService empresaService;
 	
 	@GetMapping
-	public List<Empresa> obterTodos() {
-		return empresaRepository.findAll();
+	public ResponseEntity<List<Empresa>> obterTodos() {
+		return ResponseEntity.ok().body(empresaRepository.findAll());
 	}
 	
 	@GetMapping("/{id}")
@@ -63,9 +62,9 @@ public class EmpresaResource {
 	}
 	
 	@DeleteMapping("/{id}")
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void remover(@PathVariable Long id) {
+	public ResponseEntity<?> remover(@PathVariable Long id) {
 		empresaRepository.delete(id);
+		return ResponseEntity.ok().build();
 	}
 
 }

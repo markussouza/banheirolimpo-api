@@ -38,14 +38,14 @@ public class SendMessage {
 	@Autowired
 	private FuncaoRepository funcaoRepository;
 	
+	@Autowired
+	private RestTemplate restTemplate;
+	
 	@Value("${bot.token}")
 	private String token;
 	
 	@Value("${bot.uri}")
 	private String uri;
-	
-	private RestTemplate restTemplate;
-	
 	
 	public void enviarMensagem(String numeroSensor) {
 		
@@ -58,7 +58,6 @@ public class SendMessage {
 		//350976028
 		String chat_id = "462491517";
 		//if (sensor.isPresent()) {
-			restTemplate = new RestTemplate();
 			String msg = String.format("Limite para limpeza do banheiro %s atingido às %s", "F2P", hora);
 			//String msg = String.format("Limite para limpeza do banheiro %s atingido.", sensor.get().getBanheiro().getNome());
 			//Funcao funcao = funcaoRepository.findByDescricao("ENCARREGADO");
