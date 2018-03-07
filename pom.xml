@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.inova</groupId>
-	<artifactId>inova-banheirolimpo</artifactId>
+	<artifactId>banheirolimpo-api</artifactId>
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
-	<name>inova-banheirolimpo</name>
+	<name>banheirolimpo-api</name>
 	<description>Banheiro Limpo API</description>
 
 	<parent>
