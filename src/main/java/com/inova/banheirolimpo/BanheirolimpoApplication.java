@@ -13,10 +13,10 @@ import org.springframework.web.servlet.i18n.FixedLocaleResolver;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableScheduling
-public class InovaBanheirolimpoApplication {
+public class BanheirolimpoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(InovaBanheirolimpoApplication.class, args);
+		SpringApplication.run(BanheirolimpoApplication.class, args);
 	}
 	
 	@Bean
