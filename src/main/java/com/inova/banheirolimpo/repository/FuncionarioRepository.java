@@ -9,6 +9,10 @@ import com.inova.banheirolimpo.model.Cliente;
 import com.inova.banheirolimpo.model.Funcao;
 import com.inova.banheirolimpo.model.Funcionario;
 
+/**
+ * @author Markus Souza on 13/12/2017
+ *
+ */
 @Repository
 public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> {
 	

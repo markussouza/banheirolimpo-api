@@ -2,17 +2,14 @@ package com.inova.banheirolimpo.model;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -56,8 +53,7 @@ public class Banheiro implements Serializable {
 	@Column(name = "limitador_limpeza", nullable = false)
 	private Integer limitadorLimpeza;
 	
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "banheiro", cascade = CascadeType.ALL)
-	private Sensor sensor;
+	private String codigoSensor;
 	
 	@ManyToOne
 	@JoinColumn(name = "cliente_id", foreignKey = @ForeignKey(name = "FK_CLIENTE"))

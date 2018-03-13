@@ -22,5 +22,9 @@ public class BanheiroService {
 		BeanUtils.copyProperties(banheiro, banheiroSalvo, "id");
 		return banheiroRepository.save(banheiroSalvo);
 	}
+	
+	public Banheiro findByCodigoSensor(String codigoSensor) {
+		return banheiroRepository.findByCodigoSensor(codigoSensor);
+	}
 
 }

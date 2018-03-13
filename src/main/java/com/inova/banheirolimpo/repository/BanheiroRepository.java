@@ -12,5 +12,7 @@ import com.inova.banheirolimpo.model.Cliente;
 public interface BanheiroRepository extends JpaRepository<Banheiro, Long> {
 	
 	List<Banheiro> findAllByCliente(Cliente cliente);
+	
+	Banheiro findByCodigoSensor(String codigoSensor);
 
 }

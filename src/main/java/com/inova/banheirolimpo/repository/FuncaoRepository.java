@@ -6,13 +6,13 @@ import org.springframework.stereotype.Repository;
 import com.inova.banheirolimpo.model.Funcao;
 
 /**
- * @author markussouza
+ * @author Markus Souza on 13/12/2017
  *
  */
 
 @Repository
 public interface FuncaoRepository extends JpaRepository<Funcao, Long> {
 	
-	Funcao findByDescricao(String descricao);
+	Funcao findByDescricaoIgnoreCase(String descricao);
 
 }
