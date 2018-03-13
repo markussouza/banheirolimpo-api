@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -26,7 +27,7 @@ public class Sensor implements Serializable {
 	private static final long serialVersionUID = -8004493121365258930L;
 
 	@Id
-	@Column(name = "banheiro_id")
+	@Column(name = "banheiro_id", unique = true, nullable = false)
 	@GeneratedValue(generator = "gen")
     @GenericGenerator(name = "gen", strategy = "foreign", parameters = @Parameter(name = "property", value = "banheiro"))
 	private Long id;
@@ -39,7 +40,7 @@ public class Sensor implements Serializable {
 	@Column(name = "nome_wifi", nullable = false, length = 70)
 	private String nomeWifi;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	@PrimaryKeyJoinColumn
 	private Banheiro banheiro;
 

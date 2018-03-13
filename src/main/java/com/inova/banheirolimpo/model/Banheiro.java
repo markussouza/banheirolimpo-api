@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -55,7 +56,7 @@ public class Banheiro implements Serializable {
 	@Column(name = "limitador_limpeza", nullable = false)
 	private Integer limitadorLimpeza;
 	
-	@OneToOne(mappedBy = "banheiro", cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "banheiro", cascade = CascadeType.ALL)
 	private Sensor sensor;
 	
 	@ManyToOne
