@@ -58,7 +58,6 @@ public class SendMessage {
 		Banheiro banheiro = banheiroService.findByCodigoSensor(codigoSensor);
 		//462491517
 		//350976028
-		//String chat_id = "462491517";
 		if (banheiro != null) {
 			String msg = String.format("Limite para limpeza do banheiro %s atingido às %s", banheiro.getNome(), hora);
 			Funcao funcao = funcaoRepository.findByDescricaoIgnoreCase("ENCARREGADO");

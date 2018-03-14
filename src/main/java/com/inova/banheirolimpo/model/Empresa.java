@@ -8,9 +8,6 @@ import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -22,7 +19,6 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Data
 @EqualsAndHashCode(callSuper = false)
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Empresa extends AbstractEmpresa {
 	
 	private static final long serialVersionUID = 1071168608696477420L;

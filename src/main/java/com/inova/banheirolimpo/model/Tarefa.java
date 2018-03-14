@@ -29,7 +29,6 @@ public class Tarefa implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(columnDefinition = "serial")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 

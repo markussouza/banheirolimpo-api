@@ -4,6 +4,7 @@
 package com.inova.banheirolimpo.telegram.resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import com.inova.banheirolimpo.telegram.message.service.SendMessage;
  */
 @RestController
 @RequestMapping("/api/notificacoes")
+@CrossOrigin(origins = "*")
 public class NotificacaoResource {
 	
 	@Autowired

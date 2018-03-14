@@ -15,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -29,13 +30,13 @@ import lombok.Data;
  */
 
 @Entity
+@Table(name = "pop")
 @Data
 public class ProcedimentoOperacionalPadrao implements Serializable {
 	
 	private static final long serialVersionUID = -7253693949356512861L;
 	
 	@Id
-	@Column(columnDefinition = "serial")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
