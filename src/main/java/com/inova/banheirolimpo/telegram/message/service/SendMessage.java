@@ -56,8 +56,7 @@ public class SendMessage {
 		
 		Message message = null;
 		Banheiro banheiro = banheiroService.findByCodigoSensor(codigoSensor);
-		//462491517
-		//350976028
+		
 		if (banheiro != null) {
 			String msg = String.format("Limite para limpeza do banheiro %s atingido às %s", banheiro.getNome(), hora);
 			Funcao funcao = funcaoRepository.findByDescricaoIgnoreCase("ENCARREGADO");
@@ -69,18 +68,6 @@ public class SendMessage {
 		}
 		
 		log.info(message.toString());
-
 	}
-	
-	/*public void enviarMensagem() {
-		SimpleClientHttpRequestFactory clientHttpReq = new SimpleClientHttpRequestFactory();
-		Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("proxy-rr.redecamara.camara.gov.br", 80));
-		clientHttpReq.setProxy(proxy);
-		restTemplate = new RestTemplate(clientHttpReq);
-		String msg = String.format("Limite para limpeza do banheiro %s atingido.", "F2P");
-		
-		String endpoint = String.format("%sbot%s/sendMessage?chat_id=%s&text=%s", uri, token, "350976028", msg);
-		Message message = restTemplate.postForObject(endpoint, null, Message.class);
-	}*/
 
 }
